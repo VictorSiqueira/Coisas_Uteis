@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>EXEMPLO COMPLETO DO FUNCIONAMENTO DO LIGHTBOX</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+		<style>
+		#black_overlay{
+			display: none;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+		}
+		#white_content {
+			display: none;
+			position: relative;
+			width: 80%;
+			min-width: 480px;
+			max-width: 780px;
+			margin: 0 auto;
+			padding: 0px;
+			background-color: white;
+			z-index:1002;
+			overflow: auto;
+		}
+
+		#white_content img{float: left;}
+		#white_content .txt-lightbox{float:right; padding: 10px;width: 56%;}
+	</style>
+	<body>
+		<p>Esse é o conteúdo principal. Para aparecer um lightbox, clique <a href = "javascript:void(0)" onclick = "document.getElementById('white_content').style.display='table';document.getElementById('black_overlay').style.display='block'">AQUI</a></p>
+		
+		<div id="white_content">
+			<img src="321.jpg">
+			<div class="txt-lightbox">
+				<h2>Nome do Curso</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+				<div class="btClickConf">Clique e Confira</div>
+			</div>
+			<a href = "javascript:void(0)" onclick = "document.getElementById('white_content').style.display='none';document.getElementById('black_overlay').style.display='none'">clique aqui</a>.
+		</div>
+
+		<div id="black_overlay"></div>
+	</body>
+</html>
