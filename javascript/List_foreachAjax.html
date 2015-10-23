@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .table{
+        width: 70%!important
+      }
+      .table td {text-align: center;}
+    </style>
+  </head>
+  <body onload="initONG()">
+    <table class="table">
+      <thead>
+       <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Telefone</th>
+          <th>E-mail</th>
+          <th>Atendimentos</th>
+          <th>Endereço</th>
+          <th>Cidade</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  
+<script>
+
+function initONG() {
+  $.getJSON("https://dl.dropboxusercontent.com/s/sed4jc756xuwwdo/ong.json?dl=0", function(data) {
+    console.log(JSON.stringify(data));
+
+  for (var i = 0, length = data.length; i < length; i++) {
+    var row = $("<tr>");
+    row.append($("<td>"+ data[i]._id +"</td>"))
+       .append($("<td>"+ data[i].nome + "</td>"))
+       .append($("<td>"+ data[i].tel + "</td>"))
+       .append($("<td>"+ data[i].email + "</td>"))
+       .append($("<td>"+ data[i].atendimento + "</td>"))
+       .append($("<td>"+ data[i].endereço + "</td>"))
+       .append($("<td>"+ data[i].cidade + "</td>"));
+    $("tbody").append(row);
+    if(data[i].ativo != true){
+        row.addClass("danger");
+      }
+    }    
+  });
+};
+
+</script>
+
+</body>
+</html>
