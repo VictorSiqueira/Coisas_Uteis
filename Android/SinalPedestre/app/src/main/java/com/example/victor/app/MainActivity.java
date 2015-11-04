@@ -1,12 +1,15 @@
 package com.example.victor.app;
 
+import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,9 +29,11 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView img;
+
     private String jsonResponse;
     private TextView txtResponse;
+
+    private RelativeLayout rl ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         //img = (ImageView) findViewById(R.id.imageView);
         txtResponse = (TextView) findViewById(R.id.txtResponse);
-
+        rl = (RelativeLayout)findViewById(R.id.back);
         recuperaDado();
     }
 
@@ -59,9 +64,11 @@ public class MainActivity extends AppCompatActivity {
                                 String nome = person.getString("nome");
                                 String lat = person.getString("latitude");
 
-                                jsonResponse += "Name: " + id + "\n\n";
-                                jsonResponse += "Email: " + nome + "\n\n";
+                                //jsonResponse += "Name: " + id + "\n\n";
+                                //jsonResponse += "Email: " + nome + "\n\n";
                                 jsonResponse += "Valor " + lat + "\n\n";
+                                setActivityBackgroundColor(lat);
+
                             }
                             txtResponse.setText(jsonResponse);
                         } catch (JSONException e) {
@@ -80,6 +87,22 @@ public class MainActivity extends AppCompatActivity {
 
         // Adding request to request queue
         queue.add(req);
+    }
+
+    private void setActivityBackgroundColor(String color) {
+        switch (Integer.parseInt(color)) {
+            case 1:
+                rl.setBackgroundColor(Color.RED);
+                break;
+            case 2:
+                rl.setBackgroundColor(Color.RED);
+                break;
+            case 3:
+                rl.setBackgroundColor(Color.GREEN);
+                break;
+            default:
+                rl.setBackgroundColor(Color.WHITE);
+        }
     }
 
     @Override
