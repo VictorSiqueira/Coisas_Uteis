@@ -20,16 +20,17 @@
     </style>
   </head>
   <body onload="initONG()">
-    <table class="table">
+    <table class="   table-responsive">
       <thead>
-       <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Telefone</th>
-          <th>E-mail</th>
-          <th>Atendimentos</th>
-          <th>Endereço</th>
-          <th>Cidade</th>
+       <tr class="">
+          <th class="col-md-1">ID</th>
+          <th class="col-md-3">Nome</th>
+          <th class="col-md-1">Telefone</th>
+          <th class="col-md-1">E-mail</th>
+          <th class="col-md-1">Site</th>
+          <th class="col-md-2">Endereço</th>
+          <th class="col-md-1">Cidade</th>
+          <th class="col-md-1">Estado</th>
         </tr>
       </thead>
       <tbody>
@@ -43,14 +44,15 @@ function initONG() {
     console.log(JSON.stringify(data));
 
   for (var i = 0, length = data.length; i < length; i++) {
-    var row = $("<tr>");
-    row.append($("<td>"+ data[i]._id +"</td>"))
-       .append($("<td>"+ data[i].nome + "</td>"))
-       .append($("<td>"+ data[i].tel + "</td>"))
-       .append($("<td>"+ data[i].email + "</td>"))
-       .append($("<td>"+ data[i].atendimento + "</td>"))
-       .append($("<td>"+ data[i].endereço + "</td>"))
-       .append($("<td>"+ data[i].cidade + "</td>"));
+    var row = $("<tr >");
+    row.append($("<td class=\"col-md-1\">"+ data[i].id +"</td>"))
+       .append($("<td class=\"col-md-3\">"+ data[i].nome + "</td>"))
+       .append($("<td class=\"col-md-1\">"+ data[i].tel + "</td>"))
+       .append($("<td class=\"col-md-1\">"+ data[i].email + "</td>"))
+       .append($("<td class=\"col-md-1\">"+ data[i].site + "</td>"))
+       .append($("<td class=\"col-md-2\">"+ data[i].endereço + "</td>"))
+       .append($("<td class=\"col-md-1\">"+ data[i].cidade + "</td>"))
+       .append($("<td class=\"col-md-1\">"+ data[i].estado + "</td>"));
     $("tbody").append(row);
     if(data[i].ativo != true){
         row.addClass("danger");
