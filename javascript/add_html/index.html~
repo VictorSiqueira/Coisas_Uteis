@@ -14,9 +14,13 @@
     </style>
 </head>
 <body>
-    <div id="main">
-        <input type="button" id="btAdd" value="Add Element" class="bt" />
-        <input type="button" id="btRemove" value="Remove Element" class="bt" />
-        <input type="button" id="btRemoveAll" value="Remove All" class="bt" /><br />
+    <form action="javascript:void(0);" method="POST" autocomplete="off">
+    <input type="submit" value="Submit">
+    <br>
+    <br>
+    <div class="bigjane"><button id="add">Add Field</button>
+        <div class='input_line'>
+            <input type="text" name="input_0" placeholder="Input1"><input type="text" name="input_0" placeholder="Input2"><input type="text" name="input_0" placeholder="Input3"><input type="button" class="duplicate" value="duplicate"><input type="button" class="remove" value="remove"><br></div>
     </div>
+</form>
 </body>
