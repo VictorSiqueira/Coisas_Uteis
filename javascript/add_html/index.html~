@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Create Elements Dynamically using JQuery</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js">
+            </script>
+	<script src="app.js"></script>
+    <style>
+        body {
+            font: 13px verdana;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <input type="button" id="btAdd" value="Add Element" class="bt" />
+        <input type="button" id="btRemove" value="Remove Element" class="bt" />
+        <input type="button" id="btRemoveAll" value="Remove All" class="bt" /><br />
+    </div>
+</body>
