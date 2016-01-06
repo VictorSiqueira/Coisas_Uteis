@@ -1,0 +1,32 @@
+============ Ubuntu
+
+ctrl _ alt + t = terminal
+q = sair
+>> = concatena escrita
+rmdir = remove diretorio
+-r = função recursiva, faz as coisas sem só, da pra usar com o mkdir
+sudo rm -r = otimo para apagar as coisas
+cp = copy
+mv nomeatual novonome = renomeia
+mv nomedoarquivo nomedapasta/ = move pra outro diretorio
+head -n numero nomedoarquivo =  a leitura das primeiras linhas do arquivo conforme o numero
+tail -n numero nomedoarquivo =  a leitura das ultimas linhas do arquivo conforme o numero
+less nomedoarquivo = abre o arquivo possibilitando navegar no texto com as setas
+vi =  acessa o editor de texto do terminal
+DENTRO DO VI > i = entra na edição do VI
+DENTRO DO VI > telca esc  = sai do modo de edição do VI
+DENTRO DO VI > :w  = salva as alterações que foram feitas com o VI
+DENTRO DO VI > :q  = sai do VI
+DENTRO DO VI > :q!  = sai sem salvar nada do VI
+DENTRO DO VI > / = realiza busca de uma palavra no documento
+DENTRO DO VI > n = segue o proxima resultado da busca de uma palavra no documento
+DENTRO DO VI > N = volta para anterior resultado da busca de uma palavra no documento
+
+
+============= GIT
+commitar automaticamente = git commit -a
+ver os logs de commits =  git log
+Mostrar grafico de branchs = git log --pretty "Commit %h de %an em %ad: %s" --graph 
+pegar um unico commit = git cherry-pick [hash do commit
+abrir interface visual do git = git-cola
+passar um range especifico de commit (o inicial e o final separados por ".." sempre)= git cherry-pick abcd..1234
