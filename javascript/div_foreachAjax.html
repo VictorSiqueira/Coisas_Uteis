@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnYQAf8lBovOht6c2J38tGB5dwAWNYFXM&signed_in=true&callback=initMap" async defer></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .table {
+            width: 70%!important
+        }
+        
+        .table td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body onload="initONG();initMap()">
+    <div class="row col-md-4 pull-left">
+        <div class="col-md-12">
+            <div >
+                <!--
+          <div id="cabecalho-mapa">
+            <h2 class="text-center">Lista de ONGs</h2>
+            <p class="">
+              Confira uma listagem de ONGs que levantamos por todo o Brasil, ao total levantamos 
+              informações de 133 ONGs em 26 estados brasileiros incluindo o Distrito Federal! <br> 
+              Faça bom proveito dessas informações e localize a ONG mais próxima da sua casa! <br>           
+            </p>
+             <span class="btn btn-primary" style="font-size:11px;">
+              Caso perceba que alguma informação está incorreta ou não está listada, <br>
+              Clique aqui iremos atualizar essa listagem no mesmo instante! </span>
+          </div>
+          <hr>
+          -->
+                <div id="cabecalho-mapa">
+                    <h3 class="">Lista de ONGs</h3>
+                    <p class="">
+                        <div class="btn">Total de Ongs:<span id="total-ongs">133</span></div>
+                        <div class="btn">Estados Mapeados: <span id="total-ufs">26</span>/27</div>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Informe Estado ou ONG para buscar...">
+                                        <span class="input-group-btn">
+                                          <button class="btn btn-default" type="button">Buscar</button>
+                                        </span>
+                                    </div>
+                                    <!-- /input-group -->
+                                </div>
+                                <!-- /.col-lg-6 -->
+                            </div>
+                            <!-- /.row -->
+                        </form>
+                    </p>
+                    <span class="btn btn-primary" style="font-size:11px;">
+              Caso perceba que alguma informação está incorreta ou não está listada, <br>
+              Clique aqui iremos atualizar essa listagem no mesmo instante! </span>
+                </div>
+                <hr>
+                <div id="lista-ong" style="overflow:auto;height:62vh;">
+                  <!--
+                    <div id="" class="ong thumbnail">
+                        <h5>
+                          <strong>
+                            Escola da Cidadania Mayara Redmam Abdel Aziz Centro de Apoio Pedagógico para Atendimento às Pessoas com Deficiência Visual do Amazonas - CAP AM
+                          </strong>
+                        </h5>
+                        <div style="display:table;">
+                            <span id="estado" class="col-md-12"><strong>Estado:</strong> Rio Grande do Norte</span>
+                            <br>
+                            <span id="cidade" class="col-md-12"><strong>Cidade:</strong> São jose do Rio Preto</span>
+                            <br>
+                            <span id="endereco" class="col-md-12"><strong>Endereço:</strong> Av. Assunção, 1757, piso superior do Terminal Rodoviário, sala nº 226 B - Alto Alegre</span>
+                            <br>
+                            <span id="telefone" class="col-md-12"><strong>Telefone:</strong> (99) 1234-5678/ (99) 1234-5678/ (99) 1234-5678/</span>
+                           
+                        </div>
+                    </div>
+
+                    <div id="" class="ong thumbnail">
+                        <h5>
+                          <strong>
+                            Escola da Cidadania Mayara Redmam Abdel Aziz Centro de Apoio Pedagógico para Atendimento às Pessoas com Deficiência Visual do Amazonas - CAP AM
+                          </strong>
+                        </h5>
+                        <div style="display:table;">
+                            <span id="estado" class="col-md-12"><strong>Estado:</strong> Rio Grande do Norte</span>
+                            <br>
+                            <span id="cidade" class="col-md-12"><strong>Cidade:</strong> São jose do Rio Preto</span>
+                            <br>
+                            <span id="endereco" class="col-md-12"><strong>Endereço:</strong> Av. Assunção, 1757, piso superior do Terminal Rodoviário, sala nº 226 B - Alto Alegre</span>
+                            <br>
+                            <span id="telefone" class="col-md-12"><strong>Telefone:</strong> (99) 1234-5678/ (99) 1234-5678/ (99) 1234-5678/</span>
+                            
+                        </div>
+                    </div>
+
+                    <div id="" class="ong thumbnail">
+                        <h5>
+                          <strong>
+                            Escola da Cidadania Mayara Redmam Abdel Aziz Centro de Apoio Pedagógico para Atendimento às Pessoas com Deficiência Visual do Amazonas - CAP AM
+                          </strong>
+                        </h5>
+                        <div style="display:table;">
+                            <span id="estado" class="col-md-12"><strong>Estado:</strong> Rio Grande do Norte</span>
+                            <br>
+                            <span id="cidade" class="col-md-12"><strong>Cidade:</strong> São jose do Rio Preto</span>
+                            <br>
+                            <span id="endereco" class="col-md-12"><strong>Endereço:</strong> Av. Assunção, 1757, piso superior do Terminal Rodoviário, sala nº 226 B - Alto Alegre</span>
+                            <br>
+                            <span id="telefone" class="col-md-12"><strong>Telefone:</strong> (99) 1234-5678/ (99) 1234-5678/ (99) 1234-5678/</span>
+                        </div>
+                    </div>
+
+                    <div id="" class="ong thumbnail">
+                        <h5>
+                          <strong>
+                            Escola da Cidadania Mayara Redmam Abdel Aziz Centro de Apoio Pedagógico para Atendimento às Pessoas com Deficiência Visual do Amazonas - CAP AM
+                          </strong>
+                        </h5>
+                        <div style="display:table;">
+                            <span id="estado" class="col-md-12"><strong>Estado:</strong> Rio Grande do Norte</span>
+                            <br>
+                            <span id="cidade" class="col-md-12"><strong>Cidade:</strong> São jose do Rio Preto</span>
+                            <br>
+                            <span id="endereco" class="col-md-12"><strong>Endereço:</strong> Av. Assunção, 1757, piso superior do Terminal Rodoviário, sala nº 226 B - Alto Alegre</span>
+                            <br>
+                            <span id="telefone" class="col-md-12"><strong>Telefone:</strong> (99) 1234-5678/ (99) 1234-5678/ (99) 1234-5678/</span>
+                        </div>
+                    </div>
+                  -->
+                </div>
+            </div>
+        </div>
+         
+    </div>
+    <div class="col-md-8 pull-right" id="map" style="height:100vh;"onload=""></div>
+
+
+    <script>
+        function initONG() {
+             $.getJSON("https://dl.dropboxusercontent.com/s/sed4jc756xuwwdo/ong.json?dl=0", function(data) {
+               console.log(JSON.stringify(data));
+
+             for (var i = 0, length = data.length; i < length; i++) {
+               var row = $("<div id=\"\" class=\"ong thumbnail\">");
+
+
+               
+               row.append($("<h5><strong>"+ data[i].nome +"</strong></h5>"+
+                            "<div style=\"display:table;\">"+
+                                "<span id=\"estado\" class=\"col-md-12\"><strong>Estado: </strong>"+ data[i].estado + "</span><br>"+
+                                "<span id=\"cidade\" class=\"col-md-12\"><strong>Cidade: </strong>"+data[i].cidade+"</span><br>"+
+                                "<span id=\"endereco\" class=\"col-md-12\"><strong>Endereço: </strong>"+data[i].endereço+"</span><br>"+
+                                "<span id=\"telefone\" class=\"col-md-12\"><strong>Telefone: </strong>"+data[i].tel+"</span>"+
+                            "</div>"));
+
+              
+               $("#lista-ong").append(row);
+               if(data[i].ativo != true){
+                   row.addClass("danger");
+                 }
+               }    
+             });
+        };
+
+
+  function initMap() {
+  $.getJSON("https://dl.dropboxusercontent.com/s/sed4jc756xuwwdo/ong.json?dl=0", function(data) {
+    var LatLng = {lat: -22.197974, lng:-48.1429079};
+
+    // Create a map object and specify the DOM element for display.
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: LatLng,
+      scrollwheel: true,
+      zoom: 4
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    for (var i = 0, length = data.length; i < length; i++) {
+      console.log(JSON.stringify(data[i]));
+      var myLatLng = {lat: parseFloat(data[i].latitude), lng: parseFloat(data[i].longitude)};
+
+      var contentString = '<div id="content">'+
+                            '<div id="siteNotice">'+
+                            '</div>'+
+                            '<h3 id="firstHeading" class="firstHeading">'+ data[i].nome +'</h3>'+
+                            '<div id="bodyContent">'+
+                              '<span id=\"estado\" class=\"col-md-12\"><strong>Estado: </strong>'+ data[i].estado + '</span><br>'+
+                              '<span id=\"cidade\" class=\"col-md-12\"><strong>Cidade: </strong>'+ data[i].cidade+'</span><br>'+
+                              '<span id=\"endereco\" class=\"col-md-12\"><strong>Endereço: </strong>'+data[i].endereço+'</span><br>'+
+                              '<span id=\"telefone\" class=\"col-md-12\"><strong>Telefone: </strong>'+data[i].tel+'</span>'+
+                            '</div>'+
+                          '</div>';
+
+      // Create a marker and set its position.
+      var marker = new google.maps.Marker({
+        map: map,
+        position: myLatLng,
+        title: data[i].nome
+      });
+
+      marker.addListener('click', function() {
+        infowindow.setContent(contentString);
+        infowindow.open(map, this);
+      });
+    };
+  });
+}
+    </script>
+
+</body>
+
+</html>
