@@ -1,55 +1,101 @@
 package com.example.victor.gcm;
 
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    String PROJECT_NUMBER="AIzaSyCpATmca3T-babbRi2biFCpFie3S7f9AZ0";
+    Button btnRegId;
+    EditText etRegId;
+    GoogleCloudMessaging gcm;
+    String regid;
+    String PROJECT_NUMBER = "458017685305";
+
+
+   // String PROJECT_NUMBER="AIzaSyCpATmca3T-babbRi2biFCpFie3S7f9AZ0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GCMClientManager pushClientManager = new GCMClientManager(this, PROJECT_NUMBER);
-        pushClientManager.registerIfNeeded(new GCMClientManager.RegistrationCompletedHandler() {
+        btnRegId = (Button) findViewById(R.id.btnGetRegId);
+        etRegId = (EditText) findViewById(R.id.etRegId);
+    }
+    public void getRegId(){
+        new AsyncTask<Void, Void, String>() {
             @Override
-            public void onSuccess(String registrationId, boolean isNewRegistration) {
+            protected String doInBackground(Void... params) {
+                String msg = "";
+                try {
+                    if (gcm == null) {
+                        gcm = GoogleCloudMessaging.getInstance(getApplicationContext());
+                    }
+                    regid = gcm.register(PROJECT_NUMBER);
+                    msg = "Device registered, registration ID=" + regid;
+                    Log.i("GCM",  msg);
 
-                Log.d("Registration id", registrationId);
-                //send this registrationId to your server
+                } catch (IOException ex) {
+                    msg = "Error :" + ex.getMessage();
+                }
+                return msg;
             }
-
             @Override
-            public void onFailure(String ex) {
-                super.onFailure(ex);
+            protected void onPostExecute(String msg) {
+                etRegId.setText(msg + "\n");
             }
-        });
+        }.execute(null, null, null);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+
+    public void tryLogin(View v){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://www.agoravou.com/gcm/index.php?shareRegId=true";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new com.android.volley.Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Log.i("FOI","CARALHO");
+                    }
+                }, new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("ERRO",""+error);
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("regId",regid );
+                        return params;
+                    }
+                };
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void ok(View v) {
+        getRegId();
     }
 }
