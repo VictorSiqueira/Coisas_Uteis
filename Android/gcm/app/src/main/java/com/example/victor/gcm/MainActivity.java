@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void tryLogin(View v){
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://www.agoravou.com/gcm/index.php?shareRegId=true";
+        String url ="http://www.agoravou.com/gcm/index.php?shareRegId=true&regId="+regid;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new com.android.volley.Response.Listener<String>() {
@@ -77,20 +78,21 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         Log.i("FOI","CARALHO");
+                        Toast.makeText(MainActivity.this, "enviou o reg id >>>"+ regid,Toast.LENGTH_SHORT ).show();
                     }
                 }, new com.android.volley.Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("ERRO",""+error);
                     }
-                }) {
+                })/*{
                     @Override
                     protected Map<String, String> getParams() {
                         Map<String, String> params = new HashMap<String, String>();
                         params.put("regId",regid );
                         return params;
                     }
-                };
+                }*/;
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
     }
