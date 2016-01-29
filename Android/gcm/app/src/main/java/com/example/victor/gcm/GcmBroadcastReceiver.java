@@ -11,7 +11,9 @@ import android.support.v4.content.WakefulBroadcastReceiver;
  */
 public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 
-    @Override
+   /* Primeira tentativa recebe é accionada mas nao apresenta nada na mensagem
+
+   @Override
     public void onReceive(Context context, Intent intent) {
 
         // Explicitly specify that GcmMessageHandler will handle the intent.
@@ -19,6 +21,14 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
                 GcmMessageHandler.class.getName());
 
         // Start the service, keeping the device awake while it is launching.
+        startWakefulService(context, (intent.setComponent(comp)));
+        setResultCode(Activity.RESULT_OK);
+    }*/
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        ComponentName comp = new ComponentName(context.getPackageName(),
+                GCMNotificationIntentService.class.getName());
         startWakefulService(context, (intent.setComponent(comp)));
         setResultCode(Activity.RESULT_OK);
     }
