@@ -22,10 +22,15 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
         setResultCode(Activity.RESULT_OK);
     }*/
 
+    /**
+     * Metodo que manipula o recebimento de uma notficação do servidor "gcm"
+     * @param context
+     * @param intent
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         ComponentName comp = new ComponentName(context.getPackageName(),
-                GCMNotificationIntentService.class.getName());
+                GcmNotificationIntentService.class.getName());
         startWakefulService(context, (intent.setComponent(comp)));
         setResultCode(Activity.RESULT_OK);
     }

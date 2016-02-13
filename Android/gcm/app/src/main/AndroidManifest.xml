@@ -5,8 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <permission android:name="com.hmkcode.android.gcm.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
     <uses-permission android:name="com.hmkcode.android.gcm.permission.C2D_MESSAGE" />
@@ -33,11 +33,9 @@
                 <category android:name="com.hmkcode.android.gcm" />
             </intent-filter>
         </receiver>
-
-
         <service android:name=".GcmMessageHandler" />-->
 
-        <receiver android:name=".GcmBroadcastReceiver"
+        <receiver android:name=".gcm.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
@@ -46,7 +44,8 @@
             </intent-filter>
         </receiver>
         <!-- Register Service -->
-        <service android:name=".GCMNotificationIntentService"/>
+        <service android:name=".gcm.GcmRegisterIntentService"/>
+        <service android:name=".gcm.GcmNotificationIntentService"/>
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

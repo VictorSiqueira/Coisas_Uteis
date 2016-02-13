@@ -16,13 +16,13 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 /**
  * Created by Victor on 28/01/2016.
  */
-public class GCMNotificationIntentService extends IntentService {
+public class GcmNotificationIntentService extends IntentService {
     // Sets an ID for the notification, so it can be updated
     public static final int notifyID = 9001;
     static final String MSG_KEY = "m";
     NotificationCompat.Builder builder;
 
-    public GCMNotificationIntentService() {
+    public GcmNotificationIntentService() {
         super("GcmIntentService");
     }
 
