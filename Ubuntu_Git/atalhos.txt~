@@ -37,7 +37,6 @@ bg [numero] = roda em bagkground o programa que tiver a index equivalente ao num
 fg [numero] = roda em foreground o programa que tiver a index equivalente ao numero
 [nome do programa] & = executa um programa direto no background
 sh [nome do arqivo] =  executa um script
-chmod +x [nome do arquivo] = adiciona a permissao de execução ao arquivo
 
 ============= GIT
 git commit -a = commitar automaticamente 
