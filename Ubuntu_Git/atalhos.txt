@@ -1,5 +1,6 @@
 ============ Ubuntu
 
+uname -a = saber se a versão é 64 ou 32
 ctrl _ alt + t = terminal
 q = sair
 >> = concatena escrita
