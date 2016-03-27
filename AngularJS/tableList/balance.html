@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        .border-radius-10{
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body ng-app="sortApp">
+    <div ng-controller="mainController">
+        <section class="container">
+            <div id="cabecalho" class="row">   
+                <div class="text-center row">Dados Cabeçalho</div>
+                <hr>
+                <div class="text-center row">
+                    <div class="col-md-2 pull-left">
+                        Livro 1
+                    </div>
+                    <div class="col-md-8 pull-left font-19">
+                        Livro Diário das Receitas e das Despesas
+                    </div>
+                    <div class="col-md-2 pull-right">
+                        Folha 1
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="row" ng-show="true">
+                <div class="table-responsive">
+                    <table class="table table-striped table-responsive" ng-hide="showLoading">
+                        <thead>
+                            <tr style="background: #ccc">
+                                <!-- DINAMICO, PODE SER ANUAL OU MENSAL-->
+                                <td colspan="4" class="text-center"><strong>BALANÇO DO LIVRO 5 DO ANO DE 2015</strong></td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-6"><span>Mês</span></th>
+                                <th class="col-md-2 text-right"><span>Receita (R$)</span></th>
+                                <th class="col-md-2 text-right"><span>Despesa (R$)</span></th>
+                                <th class="col-md-2 text-right"><span>Liquido</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in balance.mes">
+                                <td class="text-left">{{row.descricao}}</td>                                
+                                <td class="text-right">{{row.receita | currency}}</td>
+                                <td class="text-right">{{row.despesa | currency}}</td>
+                                <td class="text-right">{{row.liquido| currency  }}</td>
+                            <tr>                         
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="text-left"><strong>Total</strong></td>
+                                <td class="text-right"><strong>{{ balance.receita | currency}}</strong></td>
+                                <td class="text-right"><strong>{{ balance.despesa | currency}}</strong></td>
+                                <td class="text-right"><strong>{{ balance.liquido | currency}}</strong></td>
+                            <tr>
+                        </tfoot>                                           
+                    </table>
+                </div>
+                <hr>
+                <div class="panel-body border-radius-10" style="background: #ccc">
+                    <div class="col-md-6 pull-right text-right">
+                        <div class="row" ng-repeat="esp in balance.especialidade">
+                            <span class="col-md-8"><strong>{{esp.descricao}}</strong></span>
+                            <span class="col-md-4"> {{esp.valor | currency}}</span>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <span class="col-md-8"><strong>Receita</strong></span>
+                            <span class="col-md-4"> {{balance.receita | currency}}</span>
+                        </div>
+                        <div class="row">
+                            <span class="col-md-8"><strong>Despesa</strong></span>
+                            <span class="col-md-4"> {{balance.despesa | currency}}</span>
+                        </div>
+                        <div class="row">
+                            <span class="col-md-8"><strong>Liquido</strong></span>
+                            <span class="col-md-4"> {{balance.liquido | currency}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--BALANCETE se for TRue-->
+            <div class="row" ng-show="false">
+                <div class="panel-body border-radius-10">
+                    <div class="col-md-6 col-md-offset-3 text-right">
+                        <div class="row font-19 text-center" >
+                            BALANCETE DO MÊS DE NOVEMBRO DE 2015
+                        </div>
+                        <hr>
+                        <div class="row" ng-repeat="esp in balance.especialidade">
+                            <span class="col-md-8 text-left"><strong>{{esp.descricao}}</strong></span>
+                            <span class="col-md-4"> {{esp.valor | currency}}</span>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <span class="col-md-8 text-left"><strong>Receita</strong></span>
+                            <span class="col-md-4"> {{balance.receita | currency}}</span>
+                        </div>
+                        <div class="row">
+                            <span class="col-md-8 text-left"><strong>Despesa</strong></span>
+                            <span class="col-md-4"> {{balance.despesa | currency}}</span>
+                        </div>
+                        <div class="row">
+                            <span class="col-md-8 text-left"><strong>Liquido</strong></span>
+                            <span class="col-md-4"> {{balance.liquido | currency}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </section>
+    </div>
+</body>
+</html>

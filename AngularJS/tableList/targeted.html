@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        .border-radius-10{
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body ng-app="sortApp">
+    <div ng-controller="mainController">
+        <br>
+        <br>
+        <section class="container">
+            <div id="cabecalho" class="row">   
+                <div class="text-center row">Dados Cabeçalho</div>
+                <hr>
+                <div class="text-center row">
+                    <div class="col-md-2 pull-left">
+                        Livro 1
+                    </div>
+                    <div class="col-md-8 pull-left font-19">
+                        Livro Diário das Receitas e das Despesas
+                    </div>
+                    <div class="col-md-2 pull-right">
+                        Folha 1
+                    </div>
+                </div>
+                <hr>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2 pull-left">
+                    <strong>De transporte: </strong>
+                </div>
+                <div class="col-md-2 pull-right text-right">
+                    <strong>{{transport.receive.revenue}}</strong>
+                </div>
+                <div class="col-md-2 pull-right text-right">
+                    <strong>{{transport.receive.expense}}</strong>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                    <!--<div ng-show="showLoading" id="loading"> <img src="resources/images/loading.gif"></img></div>-->
+                    <table class="table table-striped table-responsive" ng-hide="showLoading">
+                        <thead>
+                            <tr>
+                                <th class="col-md-2"><span>Data</span></th>
+                                <th class="col-md-6"><span>Descrição</span></th>
+                                <th class="col-md-2 text-right"><span>Receita (R$)</span></th>
+                                <th class="col-md-2 text-right"><span>Despesa (R$)</span></th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="esp in relatorio.especialidade">
+                            <tr style="background: #ccc">
+                                <td colspan="4"><strong>{{esp.descricao}}</strong>
+                            </td>
+                            <tr ng-repeat="row in esp.valores">
+                                <td class="text-left">{{row.data}}</td>
+                                <td class="text-left">{{row.descricao}}</td>
+                                <td class="text-right">{{row.receita}}</td>
+                                <td class="text-right">{{row.despesa}}</td>
+                            <tr>                         
+                        </tbody>                   
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="row border-radius-10" style="background: #ccc">
+                <div class="col-md-6 pull-right text-right">
+                    <span class="col-md-4 ">
+                        <strong>Total do dia </strong>
+                    </span>
+                    <span class="col-md-4">
+                        R$ {{total.day.revenue}}
+                    </span>
+                    <span class="col-md-4">
+                        R$ {{total.day.expense}}
+                    </span><br>
+                    <span class="col-md-4 ">
+                        <strong>Total acumulado </strong>
+                    </span>
+                    <span class="col-md-4">
+                        R$ {{total.accumulated.revenue}}
+                    </span>
+                    <span class="col-md-4">
+                        R$ {{total.accumulated.expense}}
+                    </span><br>
+                    <span class="col-md-4 ">
+                        <strong>Saldo acumulado </strong>
+                    </span>
+                    <span class="col-md-4">
+                        R$ {{total.balance.revenue}}
+                    </span>
+                    <span class="col-md-4">
+                        R$ {{total.balance.expense}}
+                    </span><br>
+                </div>
+            </div>
+
+            <div class="row " >
+                <div class="col-md-2 pull-left">
+                    <strong>A transportar: </strong>
+                </div>
+                <div class="col-md-2 pull-right text-right">
+                    <strong>{{transport.send.revenue}}</strong>
+                </div>
+                <div class="col-md-2 pull-right text-right">
+                    <strong>{{transport.send.expense}}</strong>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
