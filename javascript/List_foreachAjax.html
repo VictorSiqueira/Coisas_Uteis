@@ -20,6 +20,7 @@
     </style>
   </head>
   <body onload="initONG()">
+<<<<<<< HEAD
     <table class="   table-responsive">
       <thead>
        <tr class="">
@@ -31,6 +32,18 @@
           <th class="col-md-2">Endereço</th>
           <th class="col-md-1">Cidade</th>
           <th class="col-md-1">Estado</th>
+=======
+    <table class="table">
+      <thead>
+       <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Telefone</th>
+          <th>E-mail</th>
+          <th>Atendimentos</th>
+          <th>Endereço</th>
+          <th>Cidade</th>
+>>>>>>> c6f1bc4... subindo arquivos js usados no liferay
         </tr>
       </thead>
       <tbody>
@@ -44,6 +57,7 @@ function initONG() {
     console.log(JSON.stringify(data));
 
   for (var i = 0, length = data.length; i < length; i++) {
+<<<<<<< HEAD
     var row = $("<tr >");
     row.append($("<td class=\"col-md-1\">"+ data[i].id +"</td>"))
        .append($("<td class=\"col-md-3\">"+ data[i].nome + "</td>"))
@@ -53,6 +67,16 @@ function initONG() {
        .append($("<td class=\"col-md-2\">"+ data[i].endereço + "</td>"))
        .append($("<td class=\"col-md-1\">"+ data[i].cidade + "</td>"))
        .append($("<td class=\"col-md-1\">"+ data[i].estado + "</td>"));
+=======
+    var row = $("<tr>");
+    row.append($("<td>"+ data[i]._id +"</td>"))
+       .append($("<td>"+ data[i].nome + "</td>"))
+       .append($("<td>"+ data[i].tel + "</td>"))
+       .append($("<td>"+ data[i].email + "</td>"))
+       .append($("<td>"+ data[i].atendimento + "</td>"))
+       .append($("<td>"+ data[i].endereço + "</td>"))
+       .append($("<td>"+ data[i].cidade + "</td>"));
+>>>>>>> c6f1bc4... subindo arquivos js usados no liferay
     $("tbody").append(row);
     if(data[i].ativo != true){
         row.addClass("danger");

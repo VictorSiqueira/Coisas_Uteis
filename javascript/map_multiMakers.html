@@ -19,7 +19,11 @@
       }
     </style>
   </head>
+<<<<<<< HEAD
   <body onload="initMap()">
+=======
+  <body>
+>>>>>>> c6f1bc4... subindo arquivos js usados no liferay
     <div id="map"></div>
     
 <script>
@@ -39,6 +43,7 @@ function initMap() {
       console.log(JSON.stringify(data[i]));
       var myLatLng = {lat: parseFloat(data[i].latitude), lng: parseFloat(data[i].longitude)};
 
+<<<<<<< HEAD
       var contentString = '<div id="content">'+
                             '<div id="siteNotice">'+
                             '</div>'+
@@ -64,17 +69,22 @@ function initMap() {
         content: contentString
       });
 
+=======
+>>>>>>> c6f1bc4... subindo arquivos js usados no liferay
       // Create a marker and set its position.
       var marker = new google.maps.Marker({
         map: map,
         position: myLatLng,
         title: data[i].nome
       });
+<<<<<<< HEAD
 
       marker.addListener('click', function() {
         infowindow.setContent(contentString);
         infowindow.open(map, this);
       });
+=======
+>>>>>>> c6f1bc4... subindo arquivos js usados no liferay
     }
   });
 }
