@@ -64,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Log.i("response", response);
-                        ArrayList<Pessoa> list = getObjectArrayFromJSON(response);
+                        Type listType = new TypeToken<ArrayList<Pessoa>>() { }.getType();
+                        ArrayList<Pessoa> list = TransferUtil.getArrayFromJSON(response, listType);
                         Log.i("teste2",list.get(0).getCidade());
                     }
                 }, new com.android.volley.Response.ErrorListener() {
@@ -75,12 +76,5 @@ public class MainActivity extends AppCompatActivity {
         });
         queue.add(stringRequest);
         Toast.makeText(this, "Foi", Toast.LENGTH_SHORT).show();
-    }
-
-    private ArrayList getObjectArrayFromJSON(String json){
-        Gson gson = new Gson();
-        Type listType = new TypeToken<ArrayList<Pessoa>>() { }.getType();
-        ArrayList<Object> list = gson.fromJson(json, listType);
-        return list;
     }
 }

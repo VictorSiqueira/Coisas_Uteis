@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Victor\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
+        <dex dex="C:\Users\Victor\Desktop\Coisas_Uteis\Android\SQLiteSample\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-43b0f8c81aa6adfcd23872bd032e10d17c9ba3ae.jar" />
+    </item>
+    <item
+        jar="C:\Users\Victor\Desktop\Coisas_Uteis\Android\SQLiteSample\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\18.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8f11f56e350eacabf2273f646d981356eea0ed77">
+        <dex dex="C:\Users\Victor\Desktop\Coisas_Uteis\Android\SQLiteSample\app\build\intermediates\pre-dexed\debug\classes-2e546523edc0bd7195141d9bcf7ac103a217e8e2.jar" />
+    </item>
+
+</items>
