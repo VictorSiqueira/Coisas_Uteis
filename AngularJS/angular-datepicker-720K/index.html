@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="720kb">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="src/css/angular-datepicker.css">
+  <style>
+    input[type="text"] {
+      border: 2px solid grey;
+    }
+    *:focus{
+      outline:4px solid red;
+    }
+  </style>
+  <title>Angularjs Datepicker</title>
+</head>
+<body class="container" ng-controller="TesteController">
+    <h1>Teste calendario</h1>
+	<div class="jumbotron" ng-hide="some"></div>
+  <div class="col-md-5">
+    <div class="col-md-5">
+      <div datepicker 
+       datepicker-class="test-custom-class" 
+        date-format="dd-MM-yyyy" 
+        date-typer="true">
+        <input ng-model="date1" type="text" class="angular-datepicker-input"/>
+      </div>
+      Date 1 is: {{date1}}
+    </div>
+</div>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.4.6/angular-locale_pt.js"></script>
+<script type="text/javascript" src="src/js/angular-datepicker.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
