@@ -1,0 +1,21 @@
+ Criando template do logger
+Sugira uma correção
+
+Crie o template do logger. Acesse o menu Window -> Preferences -> Java -> Editor -> Templatese clique no botão New.... Insira o nome logger para o template, e o código abaixo no Pattern
+
+${type:newType(org.apache.log4j.Logger)} logger = 
+Logger.getLogger(${enclosing_type}.class);
+
+Insira o logger na classe Funcionario (ou em qualquer outra que preferir). Tudo foi gerado corretamente?
+
+Modifique o seu template para também incluir um javadoc logo acima do logger, incluindo a descrição do atributo e o nome do autor.
+
+Após modificar o template, insira o logger na classe FuncionarioDAO. O código gerado deve ser o seguinte:
+
+    /**
+     * Logger para auditoria da classse FuncionarioDAO
+     * @author SeuNomeAqui
+     */
+    Logger logger = Logger.getLogger(FuncionarioDAO.class);
+
+O nome da classe na descrição deve ser gerado automaticamente, e o nome do usuário também deve ser inserido pelo Eclipse. Procure nas variáveis e nos templates existentes formas de obter esse resultado.
