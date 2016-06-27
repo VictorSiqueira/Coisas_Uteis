@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<style>
+	.someCaixa{display:none!important}
+	.caixa{width: 100px; height: 100px;  margin-top: 0px; position: relative; margin-
+	left: 0px; background-color: red;}
+	#somevc{background-color: blue; z-index:10; position: absolute;left:0; top:0}
+</style>
+<body >
+<div>
+ <div class="caixa ">My First JavaScript</h1>
+ <div id="somevc" class="caixa ">My First JavaScript</h1>
+</div> 
+<script> 
+/*
+//Javascript Puro
+
+var i = true;
+var base = document.getElementById('somevc').className;
+
+function temporizador() {
+    setTimeout(function () {
+   if(i){
+        document.getElementById('somevc').className += "someCaixa";
+        i = false;
+  }else{
+       document.getElementById('somevc').className = base;
+        i = true;
+  }
+ temporizador()
+ }, 
+ 2000);
+
+}
+window.onload = temporizador;*/
+
+//Jquery
+function loop (){
+  setTimeout(function () {
+    $('#somevc').toggleClass('someCaixa');
+    loop ()
+  }, 
+  2000);
+}
+
+$( document ).ready(function(){
+    loop()
+});
+</script>
+</body>
