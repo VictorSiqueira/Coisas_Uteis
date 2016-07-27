@@ -1,0 +1,25 @@
+referencias 
+https://www.youtube.com/watch?v=rdYQOqxq9F0
+
+
+------ CONFIGURANDO PROJETO ---------------- 
+
+ - criar um web dinamic project
+ - criar dentro do source um package "main" e dentro dele "java","resources","webapp" e "test"
+ - selecionar o projeto, botao direito, opção "configure", sub opção "convert to "Maven"
+ - colocar a 4 opção como war
+ - clicar no preojeto, botao direito, opção "properties"
+ - selecionar a opção "Deployment Assmebly", selecionar "add"
+ - selcionar "Java Build Path Entries" e esclher a lib "Maven Dependencies"
+ - abrir arquivo pom e adicionar as depencias default(vou por isso alguma hora)
+
+------ COnfiurando data base ------
+ - crie um data base e uma tabela com seus respectivos atributos
+ - dentro do projeto, no rec/main/java, crie uma classe que seja reflexo da tabela acima criada
+ - na classe que foi criada, adicione a annotation "@Entity" do packacge javax.persisntece.Entity
+   para mapeamento do JPA(colocar link para explicar o que é JPA)
+ - apos isso, para o atributo de "id" coloque as seguintes annotations
+   "@Id","@Column"," @GeneratedValue(strategy=GenerationType.AUTO)"(esse ultimo é para auto incrment)
+ - e os atributos restantes, coloque "@Column" acima de todos
+
+----- Configurando o DAO ---------
