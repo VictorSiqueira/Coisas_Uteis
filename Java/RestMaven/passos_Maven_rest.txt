@@ -1,5 +1,9 @@
 referencias 
-https://www.youtube.com/watch?v=rdYQOqxq9F0
+https://www.mkyong.com/webservices/jax-rs/jersey-hello-world-example/
+
+
+*** basta seguir o link acima, vale destacar que tem alguns detalhes que podem dar prolemas
+nao copie diretamente, web-xml e o pom xml, e o index jsp no WebCOntent foi necessario
 
 
 ------ CONFIGURANDO PROJETO ---------------- 
@@ -22,4 +26,4 @@ https://www.youtube.com/watch?v=rdYQOqxq9F0
    "@Id","@Column"," @GeneratedValue(strategy=GenerationType.AUTO)"(esse ultimo é para auto incrment)
  - e os atributos restantes, coloque "@Column" acima de todos
 
------ Configurando o DAO ---------
+ -----------------  
