@@ -13,6 +13,6 @@ public class HelloWorld {
 	public Response getMsg(@PathParam("param") String msg) { 
 		String output = "Jersey manda : " + msg; 
 		return Response.status(200).entity(output).build();
- 
+		//http://localhost:8080/SimpleRESTWeb/rest/hello/mkyong
 	}
 }
