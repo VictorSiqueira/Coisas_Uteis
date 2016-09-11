@@ -24,6 +24,7 @@ public class SimpleDAO {
 	 
     public SimpleDAO() {
         conn = DBUtil.getDBConnection();
+        //conn.setAutoCommit(false); // setando false desabilita autocommit;
     }
   
     public ObjTeste addObjTeste( ObjTeste obj ) {
