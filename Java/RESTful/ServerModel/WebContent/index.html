@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- colocar onsubmit com retorno de false, 
+	evita que o formulario tenha o comportamento de submit -->
+	<h2>Basic CRUD</h2>
+	<hr>
+	<form onsubmit="return false">
+		Id: &nbsp;
+		<input id="id" type="text" name="id" >
+		&nbsp;&nbsp;
+		Nome: &nbsp;
+		<input id="name" type="text" name="name">
+	</form>
+	<br>		
+	<button id="submitAdd">add</button>
+	<button id="submitUpdate">update</button>
+	<button id="submitById">get by id</button>
+	<button id="submitAll">get All</button>
+	<button id="submitDelete">delete</button>
+	
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="app.js"></script>
+</html>

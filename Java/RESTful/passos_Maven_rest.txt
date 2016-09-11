@@ -1,0 +1,22 @@
+referencias 
+https://www.mkyong.com/webservices/jax-rs/jersey-hello-world-example/
+
+
+*** basta seguir o link acima, vale destacar que tem alguns detalhes que podem dar prolemas
+nao copie diretamente, web-xml e o pom xml, e o index jsp no WebCOntent foi necessario
+
+
+------ CONFIGURANDO PROJETO ---------------- 
+
+ - criar um web dinamic project
+ - ainda no assitente de criaçãp, apertar next, apagar o 'src' ja existente
+ - criar um novo src com package "main" e dentro dele "java","resources","webapp" e "test"
+ - selecionar o projeto, botao direito, opção "configure", sub opção "convert to "Maven"
+ - colocar a 4 opção como war
+ ? - clicar no preojeto, botao direito, opção "properties"
+ ? - selecionar a opção "Deployment Assmebly", selecionar "add"
+ ? - selcionar "Java Build Path Entries" e esclher a lib "Maven Dependencies"
+ - abrir arquivo pom e adicionar as depencias default(vou por isso alguma hora)
+ - nao precisa apagar o web-content como indica no exemplo
+ - e vale lembrar que no passo do xml no indicador de init-param, o param-value 
+é o package onde ta a classe
