@@ -1,18 +1,12 @@
 package br.com.stroblight.fragments;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.Switch;
-import android.widget.ToggleButton;
-
-import java.util.concurrent.TimeUnit;
 
 import br.com.stroblight.R;
 import br.com.stroblight.utils.FlashUtil;
@@ -20,9 +14,8 @@ import br.com.stroblight.utils.FlashUtil;
 /**
  * Created by Victor on 12/09/2016.
  */
-public class StroboFragment extends Fragment {
-    private Switch button;
-    private boolean loopingLight = false;
+public class TapLightFragment extends Fragment {
+    private Button button;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,24 +25,10 @@ public class StroboFragment extends Fragment {
     }
 
     public void create(View view) {
-        button = (Switch) view.findViewById(R.id.switchToggle);
+        button = (Button) view.findViewById(R.id.buttonStrobolight);
         FlashUtil.initializateFlashLight(view, button);
 
-        button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    loopingLight = true;
-                    loopLights();
-                }else{
-                    loopingLight = false;
-                   // loopLights();
-                }
-            }
-        });
-
-
-
-        /*button.setOnTouchListener(new View.OnTouchListener() {
+        button.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
@@ -64,22 +43,6 @@ public class StroboFragment extends Fragment {
                 }
                 return false;
             }
-        });*/
-    }
-
-    private void loopLights()  {
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                while(loopingLight){
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-                        FlashUtil.toggleFlashLight();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }, 200);
-
+        });
     }
 }
