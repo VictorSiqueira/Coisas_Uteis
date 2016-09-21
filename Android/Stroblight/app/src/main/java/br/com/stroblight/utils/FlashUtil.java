@@ -51,11 +51,11 @@ public class FlashUtil {
     public static void toggleFlashLight() {
         try {
             if (isLighOn) {
-                Log.i("info", "torch is turn off!");
+                //Log.i("info", "torch is turn off!");
                 camManager.setTorchMode(finalCameraId, false);
                 isLighOn = false;
             } else {
-                Log.i("info", "torch is turn on!");
+                //Log.i("info", "torch is turn on!");
                 camManager.setTorchMode(finalCameraId, true);
                 isLighOn = true;
             }

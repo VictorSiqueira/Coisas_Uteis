@@ -35,14 +35,15 @@ public class TapLightFragment extends Fragment {
                     case MotionEvent.ACTION_DOWN:
                         // PRESSED
                         FlashUtil.toggleFlashLight();
-                        return true; // if you want to handle the touch event
+                        return false; // if you want to handle the touch event
                     case MotionEvent.ACTION_UP:
                         FlashUtil.toggleFlashLight();
                         // RELEASED
-                        return true; // if you want to handle the touch event
+                        return false; // if you want to handle the touch event
                 }
                 return false;
             }
         });
     }
+
 }

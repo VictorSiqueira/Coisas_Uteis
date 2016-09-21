@@ -1,6 +1,7 @@
 package br.com.stroblight.fragments;
 
 import android.content.Context;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -47,7 +48,7 @@ public class StroboFragment extends Fragment {
         button = (Switch) view.findViewById(R.id.switchToggle);
         FlashUtil.initializateFlashLight(view, button);
 
-        loopLights();
+        //loopLights();
 
         button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -62,21 +63,6 @@ public class StroboFragment extends Fragment {
         });
     }
 
-    private void loopLights()  {
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                while(loopingLight){
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }, 200);
-    }
-
 
 
     public void startTimer() {
@@ -85,7 +71,7 @@ public class StroboFragment extends Fragment {
         //initialize the TimerTask's job
         initializeTimerTask();
         //schedule the timer, after the first 5000ms the TimerTask will run every 10000ms
-        timer.schedule(timerTask, 100, 150);
+        timer.schedule(timerTask, 125, 125);
 
     }
 
@@ -109,5 +95,4 @@ public class StroboFragment extends Fragment {
             }
         };
     }
-
 }
